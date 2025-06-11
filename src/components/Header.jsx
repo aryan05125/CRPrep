@@ -1,57 +1,65 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import { FaCode, FaMoon, FaSun } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Header = () => {
-  // (Optional) Dark mode toggle logic (can be improved later)
-  const [darkMode, setDarkMode] = React.useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleTheme = () => setDarkMode(!darkMode);
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Categories", path: "/categories" },
-    { name: "Roadmaps", path: "/roadmaps" },
-    { name: "Resources", path: "/resources" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 shadow-lg text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3 flex justify-between items-center">
+    <header className="bg-gray-900 text-white shadow-md sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         
         {/* Logo */}
-        <Link to="/" className="text-xl font-bold flex items-center gap-2">
-          <FaCode className="text-purple-500" />
+        <Link to="/" className="text-2xl font-bold text-purple-400">
           CRPrep
         </Link>
 
-        {/* Nav Links */}
-        <nav className="hidden md:flex space-x-6">
-          {navItems.map((item) => (
-            <NavLink
-              key={item.name}
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex space-x-6 text-sm font-medium">
+          {navItems.map((item, index) => (
+            <Link
+              key={index}
               to={item.path}
-              className={({ isActive }) =>
-                `hover:text-purple-400 transition duration-300 ${
-                  isActive ? "text-purple-500 font-semibold" : ""
-                }`
-              }
+              className="hover:text-purple-300 transition"
             >
               {item.name}
-            </NavLink>
+            </Link>
           ))}
         </nav>
 
-        {/* Theme Button */}
+        {/* Mobile Menu Icon */}
         <button
-          onClick={toggleTheme}
-          className="ml-4 p-2 bg-gray-800 rounded-full hover:bg-gray-700 transition"
+          onClick={toggleMenu}
+          className="text-2xl md:hidden focus:outline-none"
         >
-          {darkMode ? <FaMoon /> : <FaSun />}
+          {isOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
+
+      {/* Mobile Dropdown */}
+      {isOpen && (
+        <div className="md:hidden bg-gray-800 px-4 pb-4 space-y-2">
+          {navItems.map((item, index) => (
+            <Link
+              key={index}
+              to={item.path}
+              className="block py-2 border-b border-gray-700 hover:text-purple-300"
+              onClick={() => setIsOpen(false)}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+      )}
     </header>
   );
 };
