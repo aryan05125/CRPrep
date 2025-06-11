@@ -35,7 +35,7 @@ const Contact = () => {
           </a>
 
           <a
-            href="https://www.linkedin.com/in/aryan-chauhan"
+            href="www.linkedin.com/in/aryan-chauhan-3a8010227"
             target="_blank"
             rel="noreferrer"
             className="bg-gray-800 hover:bg-purple-700 transition rounded-xl p-6 shadow-lg flex flex-col items-center justify-center space-y-4"
@@ -45,7 +45,7 @@ const Contact = () => {
           </a>
 
           <a
-            href="https://github.com/aryanchauhan"
+            href="www.linkedin.com/in/aryan-chauhan-3a8010227"
             target="_blank"
             rel="noreferrer"
             className="bg-gray-800 hover:bg-purple-700 transition rounded-xl p-6 shadow-lg flex flex-col items-center justify-center space-y-4"
@@ -55,7 +55,7 @@ const Contact = () => {
           </a>
 
           <a
-            href="https://wa.me/919409647292"
+            href="https://wa.me/9409647292"
             target="_blank"
             rel="noreferrer"
             className="bg-gray-800 hover:bg-purple-700 transition rounded-xl p-6 shadow-lg flex flex-col items-center justify-center space-y-4"
